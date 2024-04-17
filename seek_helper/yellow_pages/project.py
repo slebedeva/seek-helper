@@ -11,7 +11,7 @@ class Project(HttpHelper):
         self.base_url = base_url
         self.output_path = output_path
 
-    def download_data_files(self, id: str, limit: int = 10) -> dict:
+    def download_data_files(self, id: str, limit: int = 10) -> None:
         r = requests.get(f'{self.url}/{id}', headers=self.headers)
         r.raise_for_status()
         response = r.json()

@@ -8,7 +8,7 @@ class DataFile(HttpHelper):
         super().__init__(token=token, url=f'{base_url}/data_files')
         self.output_path = output_path
 
-    def download(self, id: int) -> dict:
+    def download(self, id: int) -> None:
         r = requests.get(f'{self.url}/{id}', headers=self.headers)
         r.raise_for_status()
         data_file = r.json()
