@@ -16,8 +16,10 @@ from seek_helper import SeekHelper
 seek_helper = SeekHelper('your_token', 'seek_instance_url', 'output_path')
 ```
 
-`your_token`: your SEEK API Token. It can be generated on SEEK, Profile > Actions > API Token\
-`seek_instance_url`: the SEEK instance URL to be used, like http://localhost:3000\
+`your_token`: your SEEK API Token. It can be generated on SEEK, Profile > Actions > API Token
+
+`seek_instance_url`: the SEEK instance URL to be used, like http://localhost:3000
+
 `output_path`: a path where downloaded files will be stored
 
 Then you can instantiate an object of a resource. Example:
