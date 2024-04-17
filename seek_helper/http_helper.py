@@ -11,23 +11,22 @@ class HttpHelper():
         self.url = url
 
     def get(self, id: int = None) -> dict:
-        if id:
-            url = f'{self.url}/{id}'
+        url = f'{self.url}/{id}' if id else self.url
         r = requests.get(url, headers=self.headers)
         r.raise_for_status()
         return r.json()
 
-    def create(self, data: dict) -> None:
+    def create(self, data: dict) -> dict:
         r = requests.post(self.url, headers=self.headers, json=data)
         r.raise_for_status()
         return r.json()
 
-    def update(self, id: int, data: dict) -> None:
+    def update(self, id: int, data: dict) -> dict:
         r = requests.patch(f'{self.url}/{id}', headers=self.headers, json=data)
         r.raise_for_status()
         return r.json()
 
-    def delete(self, id: int) -> None:
+    def delete(self, id: int) -> dict:
         r = requests.delete(f'{self.url}/{id}', headers=self.headers)
         r.raise_for_status()
         return r.json()
