@@ -1,10 +1,10 @@
-from yellow_pages.project import Project
+from seek_helper.yellow_pages.project import Project
 
-from experiments.investigation import Investigation
-from experiments.study import Study
-from experiments.assay import Assay
+from seek_helper.experiments.investigation import Investigation
+from seek_helper.experiments.study import Study
+from seek_helper.experiments.assay import Assay
 
-from assets.data_file import DataFile
+from seek_helper.assets.data_file import DataFile
 
 
 class SeekHelper():

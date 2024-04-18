@@ -1,6 +1,6 @@
 import requests
-from http_helper import HttpHelper
-from assets.data_file import DataFile
+from seek_helper.http_helper import HttpHelper
+from seek_helper.assets.data_file import DataFile
 
 
 class Project(HttpHelper):

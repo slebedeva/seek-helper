@@ -1,4 +1,4 @@
-from http_helper import HttpHelper
+from seek_helper.http_helper import HttpHelper
 
 
 class Study(HttpHelper):

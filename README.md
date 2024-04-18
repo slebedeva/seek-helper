@@ -34,7 +34,7 @@ p = project.get(1)
 print(p)
 ```
 
-This code snippet will print data of the Project of id 1 in JSON format.
+This code snippet will print data of the Project of id 1 in `JSON` format.
 
 ### Resources
 
