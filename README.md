@@ -23,7 +23,7 @@ The FAIRDOMHub API documentation is [here](https://fairdomhub.org/api).
     python3 -m build
     ```
 3) Copy the generated `tar.gz` file to your project/code directory
-4) Inside your project/code directory, install the library:
+4) Inside your project/code directory, install the library (e.g. version 0.1.0):
     ```python
     pip install seek_helper-0.1.0.tar.gz
     ```
@@ -258,7 +258,7 @@ Below are the current resources and operations available. Check the API document
     # Get a data file by id
     df = data_file.get(1)
 
-    # Download a data file
+    # Download a data file by id
     data_file.download(1)
 
     # Delete a data file by id
