@@ -22,3 +22,9 @@ class DataFile(HttpHelper):
             r.raise_for_status()
             with open(f"{self.output_path}/{file['filename']}", 'wb') as f:
                 f.write(r.content)
+
+    def create(self):
+        pass
+
+    def update(self):
+        pass
