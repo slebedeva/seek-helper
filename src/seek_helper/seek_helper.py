@@ -8,9 +8,10 @@ from seek_helper.assets.data_file import DataFile
 
 
 class SeekHelper():
-    def __init__(self, token: str, base_url: str, output_path: str):
+    def __init__(self, token: str, base_url: str, output_path: str, input_path: str):
         # Yellow Pages
-        self.Project = Project(token, base_url, output_path)
+        self.Project = Project(
+            token, base_url, output_path, input_path, DataFile(token, base_url, output_path))
 
         # Experiments
         self.Investigation = Investigation(token, base_url)

@@ -9,9 +9,7 @@ class DataFile(HttpHelper):
         self.output_path = output_path
 
     def download(self, id: int) -> None:
-        r = requests.get(f'{self.url}/{id}', headers=self.headers)
-        r.raise_for_status()
-        data_file = r.json()
+        data_file = self.get(id)
 
         content_blobs = data_file['data']['attributes']['content_blobs']
         files = [{'filename': content_blob['original_filename'],
@@ -22,9 +20,3 @@ class DataFile(HttpHelper):
             r.raise_for_status()
             with open(f"{self.output_path}/{file['filename']}", 'wb') as f:
                 f.write(r.content)
-
-    def create(self):
-        pass
-
-    def update(self):
-        pass

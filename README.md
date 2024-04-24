@@ -35,7 +35,7 @@ Import the library and instantiate the `SeekHelper` class:
 ```python
 from seek_helper import SeekHelper
 
-seek_helper = SeekHelper('your_token', 'seek_instance_url', 'output_path')
+seek_helper = SeekHelper('your_token', 'seek_instance_url', 'output_path', 'input_path')
 ```
 
 `your_token`: your SEEK API Token. It can be generated on SEEK in Profile > Actions > API Token
@@ -43,6 +43,8 @@ seek_helper = SeekHelper('your_token', 'seek_instance_url', 'output_path')
 `seek_instance_url`: the SEEK instance URL to be used, like http://localhost:3000
 
 `output_path`: a path where downloaded files will be stored
+
+`input_path`: a path where files for upload are stored
 
 Then you can instantiate an object of a resource. Example:
 
@@ -87,6 +89,7 @@ Below are the current resources and operations available. Check the API document
     # Update a project
     project.update(1, {
         "data": {
+            "id": 1,
             "type": "projects",
             "attributes": {
                 "description": "This is an example of project update",
@@ -96,6 +99,9 @@ Below are the current resources and operations available. Check the API document
 
     # Download all data files of a project
     project.download_data_files()
+
+    # Upload data files to a project
+    project.upload_data_files(1)
 
     # Delete a project by id
     project.delete(1)
@@ -138,6 +144,7 @@ Below are the current resources and operations available. Check the API document
     # Update an investigation
     investigation.update(1, {
         "data": {
+            "id": 1,
             "type": "investigations",
             "attributes": {
                 "description": "This is an example of investigation update",
@@ -183,6 +190,7 @@ Below are the current resources and operations available. Check the API document
     # Update a study
     study.update(1, {
         "data": {
+            "id": 1,
             "type": "studies",
             "attributes": {
                 "description": "This is an example of study update",
@@ -234,6 +242,7 @@ Below are the current resources and operations available. Check the API document
     # Update an assay
     assay.update(1, {
         "data": {
+            "id": 1,
             "type": "assays",
             "attributes": {
                 "description": "This is an example of assay update",
@@ -258,6 +267,43 @@ Below are the current resources and operations available. Check the API document
     # Get a data file by id
     df = data_file.get(1)
 
+    # Create a data file
+    data_file.create({
+        "data": {
+            "type": "data_files",
+            "attributes": {
+                "title": "Data File example",
+                    "content_blobs": [
+                        {
+                            "original_filename": "file.jpg",
+                            "content_type": "image/jpeg"
+                        }
+                    ],
+            },
+            "relationships": {
+                "projects": {
+                    "data": [
+                        {
+                            "id": 1,
+                            "type": "projects"
+                        }
+                    ]
+                },
+            }
+        }
+    })
+
+    # Update a data file
+    data_file.update(1, {
+        "data": {
+            "id": 1,
+            "type": "data_files",
+            "attributes": {
+                "description": "This is an example of data file update",
+            },
+        }
+    })
+
     # Download a data file by id
     data_file.download(1)
 
@@ -268,5 +314,6 @@ Below are the current resources and operations available. Check the API document
 ## TODO
 - Include more resources and operations
 - Write unit tests
+- Add logs
 - Upload the library to a repository like PyPi
 - Typify entities
