@@ -313,9 +313,9 @@ Below are the current resources and operations available. Check the API document
 
 ## Testing
 In the project root, run:
-    ```bash
-    pytest
-    ```
+```bash
+pytest
+```
 
 ## TODO
 - Include more resources and operations
