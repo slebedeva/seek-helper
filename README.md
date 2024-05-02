@@ -15,16 +15,16 @@ The FAIRDOMHub API documentation is [here](https://fairdomhub.org/api).
 ### Steps
 1) Clone this repository
 2) Install `build`:
-    ```
+    ```bash
     python3 -m pip install --upgrade build
     ```
 3) Inside `seek-helper` directory, build the library:
-    ```
+    ```bash
     python3 -m build
     ```
 3) Copy the generated `tar.gz` file to your project/code directory
 4) Inside your project/code directory, install the library (e.g. version 0.1.0):
-    ```
+    ```bash
     pip install seek_helper-0.1.0.tar.gz
     ```
 
@@ -272,7 +272,7 @@ Below are the current resources and operations available. Check the API document
         "data": {
             "type": "data_files",
             "attributes": {
-                "title": "Data File example",
+                "title": "Data File Example",
                     "content_blobs": [
                         {
                             "original_filename": "file.jpg",
@@ -313,7 +313,7 @@ Below are the current resources and operations available. Check the API document
 
 ## Testing
 In the project root, run:
-    ```
+    ```bash
     pytest
     ```
 

@@ -90,6 +90,6 @@ class TestProject:
 
         assert result == json.loads(DELETE_RESPONSE)
 
-    # TODO: download_data_files
+    # TODO: test_download_data_files
 
-    # TODO: upload_data_files
+    # TODO: test_upload_data_files
