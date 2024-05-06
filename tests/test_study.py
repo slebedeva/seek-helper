@@ -5,7 +5,7 @@ from seek_helper.experiments.study import Study
 
 GET_RESPONSE = '{"data":[{"id":"1","type":"studies","attributes":{"title":"Study Example"},"links":{"self":"/studies/1"}}],"jsonapi":{"version":"1.0"},"links":{"self":"/studies?page%5Bnumber%5D=1&page%5Bsize%5D=1000000","first":"/studies?page%5Bnumber%5D=1&page%5Bsize%5D=1000000","prev":null,"next":null,"last":"/studies?page%5Bnumber%5D=1&page%5Bsize%5D=1000000"},"meta":{"base_url":"http://localhost:3000","api_version":"0.3"}}'
 POST_RESPONSE = '{"data":{"id":"2","type":"studies","attributes":{"policy":{"access":"no_access","permissions":[]},"discussion_links":[],"snapshots":[],"title":"Study Example","description":"This is an example of study creation","experimentalists":null,"other_creators":null,"position":null,"creators":[]},"relationships":{"creators":{"data":[]},"submitter":{"data":[{"id":"1","type":"people"}]},"people":{"data":[{"id":"1","type":"people"}]},"projects":{"data":[{"id":"1","type":"projects"}]},"investigation":{"data":{"id":"1","type":"investigations"}},"assays":{"data":[]},"data_files":{"data":[]},"models":{"data":[]},"sops":{"data":[]},"publications":{"data":[]},"documents":{"data":[]}},"links":{"self":"/studies/2"},"meta":{"created":"2024-05-02T09:29:34.000Z","modified":"2024-05-02T09:29:34.000Z","api_version":"0.3","base_url":"http://localhost:3000","uuid":"6983a2f0-ea94-013c-5750-00155d0fd7d9"}},"jsonapi":{"version":"1.0"}}'
-PATCH_RESPONSE = '{"data":{"id":"1","type":"studies","attributes":{"policy":{"access":"no_access","permissions":[{"resource":{"id":"1","type":"projects"},"access":"download"}]},"discussion_links":[],"snapshots":[],"title":"Study Example","description":"This is an example of study update","experimentalists":null,"other_creators":"","position":null,"creators":[]},"relationships":{"creators":{"data":[{"id":"1","type":"people"}]},"submitter":{"data":[{"id":"1","type":"people"}]},"people":{"data":[{"id":"1","type":"people"}]},"projects":{"data":[{"id":"1","type":"projects"}]},"investigation":{"data":{"id":"1","type":"investigations"}},"assays":{"data":[{"id":"1","type":"assays"},{"id":"2","type":"assays"},{"id":"3","type":"assays"}]},"data_files":{"data":[{"id":"1","type":"data_files"}]},"models":{"data":[]},"sops":{"data":[]},"publications":{"data":[]},"documents":{"data":[]}},"links":{"self":"/studies/1"},"meta":{"created":"2024-04-03T15:24:00.000Z","modified":"2024-05-02T09:32:02.000Z","api_version":"0.3","base_url":"http://localhost:3000","uuid":"1e9700e0-d3fc-013c-780a-00155ddef5bd"}},"jsonapi":{"version":"1.0"}}'
+PATCH_RESPONSE = '{"data":{"id":"2","type":"studies","attributes":{"policy":{"access":"no_access","permissions":[{"resource":{"id":"1","type":"projects"},"access":"download"}]},"discussion_links":[],"snapshots":[],"title":"Study Example","description":"This is an example of study update","experimentalists":null,"other_creators":"","position":null,"creators":[]},"relationships":{"creators":{"data":[{"id":"1","type":"people"}]},"submitter":{"data":[{"id":"1","type":"people"}]},"people":{"data":[{"id":"1","type":"people"}]},"projects":{"data":[{"id":"1","type":"projects"}]},"investigation":{"data":{"id":"1","type":"investigations"}},"assays":{"data":[{"id":"1","type":"assays"},{"id":"2","type":"assays"},{"id":"3","type":"assays"}]},"data_files":{"data":[{"id":"1","type":"data_files"}]},"models":{"data":[]},"sops":{"data":[]},"publications":{"data":[]},"documents":{"data":[]}},"links":{"self":"/studies/2"},"meta":{"created":"2024-04-03T15:24:00.000Z","modified":"2024-05-02T09:32:02.000Z","api_version":"0.3","base_url":"http://localhost:3000","uuid":"1e9700e0-d3fc-013c-780a-00155ddef5bd"}},"jsonapi":{"version":"1.0"}}'
 DELETE_RESPONSE = '{"status": "ok"}'
 
 
@@ -62,7 +62,7 @@ class TestStudy:
                     'investigation': {
                         'data': {
                             'id': '1',
-                            'type': 'investigations'
+                            'type': 'investigations',
                         }
                     },
                 }
@@ -83,7 +83,7 @@ class TestStudy:
     def test_update(self, study):
         payload = {
             'data': {
-                'id': '1',
+                'id': '2',
                 'type': 'studies',
                 'attributes': {
                     'description': 'This is an example of study update',
@@ -91,7 +91,7 @@ class TestStudy:
             }
         }
 
-        result = study.update(1, payload)
+        result = study.update(2, payload)
 
         assert result == json.loads(PATCH_RESPONSE)
         assert result['data']['id'] == payload['data']['id']

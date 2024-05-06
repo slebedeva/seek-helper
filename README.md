@@ -63,6 +63,123 @@ Users can only manage the resources they are permitted to manage or are public.
 Below are the current resources and operations available. Check the API documentation for the correct payloads and responses.
 
 **Yellow Pages**
+- Institutions
+    ```python
+    institution = seek_helper.Institution
+
+    # Examples:
+
+    # Get all institutions
+    i = institution.get()
+
+    # Get an institution by id
+    i = institution.get(1)
+
+    # Create an institution
+    institution.create({
+        "data": {
+            "type": "institutions",
+            "attributes": {
+                "title": "Institution Example",
+                "country": "Brazil",
+            },
+        }
+    })
+
+    # Update an institution
+    institution.update(1, {
+        "data": {
+            "id": "1",
+            "type": "institutions",
+            "attributes": {
+                "title": "Institution Update Example",
+            },
+        }
+    })
+
+    # Delete an institution by id
+    institution.delete(1)
+    ```
+
+- People
+    ```python
+    people = seek_helper.People
+
+    # Examples:
+
+    # Get all people
+    pe = people.get()
+
+    # Get a person by id
+    pe = people.get(1)
+
+    # Create a person
+    people.create({
+        "data": {
+            "type": "people",
+            "attributes": {
+                "first_name": "Person First Name Example",
+                "last_name": "Person Last Name Example",
+                "email": "email@example.com"
+            },
+        }
+    })
+
+    # Update a person
+    people.update(1, {
+        "data": {
+            "id": "1",
+            "type": "people",
+            "attributes": {
+                "first_name": "Person First Name Update Example",
+            },
+        }
+    })
+
+    # Delete a person by id
+    people.delete(1)
+
+    # Get current person
+    pe = people.get_current()
+    ```
+
+- Programme
+    ```python
+    programme = seek_helper.Programme
+
+    # Examples:
+
+    # Get all programmes
+    pr = people.programme()
+
+    # Get a programme by id
+    pr = people.programme(1)
+
+    # Create a programme
+    programme.create({
+        "data": {
+            "type": "programmes",
+            "attributes": {
+                "title": "Programme Example",
+            },
+        }
+    })
+
+    # Update a programme
+    programme.update(1, {
+        "data": {
+            "id": "1",
+            "type": "programmes",
+            "attributes": {
+                    "title": "Programme Update Example",
+            },
+        }
+    })
+
+    # Delete a person by id
+    programme.delete(1)
+    ```
+
 - Projects
     ```python
     project = seek_helper.Project
@@ -89,7 +206,7 @@ Below are the current resources and operations available. Check the API document
     # Update a project
     project.update(1, {
         "data": {
-            "id": 1,
+            "id": "1",
             "type": "projects",
             "attributes": {
                 "description": "This is an example of project update",
@@ -144,7 +261,7 @@ Below are the current resources and operations available. Check the API document
     # Update an investigation
     investigation.update(1, {
         "data": {
-            "id": 1,
+            "id": "1",
             "type": "investigations",
             "attributes": {
                 "description": "This is an example of investigation update",
@@ -190,7 +307,7 @@ Below are the current resources and operations available. Check the API document
     # Update a study
     study.update(1, {
         "data": {
-            "id": 1,
+            "id": "1",
             "type": "studies",
             "attributes": {
                 "description": "This is an example of study update",
@@ -242,7 +359,7 @@ Below are the current resources and operations available. Check the API document
     # Update an assay
     assay.update(1, {
         "data": {
-            "id": 1,
+            "id": "1",
             "type": "assays",
             "attributes": {
                 "description": "This is an example of assay update",
@@ -284,19 +401,19 @@ Below are the current resources and operations available. Check the API document
                 "projects": {
                     "data": [
                         {
-                            "id": 1,
+                            "id": "1",
                             "type": "projects"
                         }
                     ]
                 },
-            }
+            },
         }
     })
 
     # Update a data file
     data_file.update(1, {
         "data": {
-            "id": 1,
+            "id": "1",
             "type": "data_files",
             "attributes": {
                 "description": "This is an example of data file update",
