@@ -18,5 +18,5 @@ class DataFile(HttpHelper):
         for file in files:
             r = requests.get(f"{file['link']}/download", headers=self.headers)
             r.raise_for_status()
-            with open(f"{self.output_path}/{file['filename']}", 'wb') as f:
+            with open(f"{self.output_path}/{id}_{file['filename']}", 'wb') as f:
                 f.write(r.content)

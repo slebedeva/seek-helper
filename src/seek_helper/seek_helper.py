@@ -17,12 +17,13 @@ class SeekHelper():
         self.People = People(token, base_url)
         self.Programme = Programme(token, base_url)
         self.Project = Project(
-            token, base_url, output_path, input_path, DataFile(token, base_url, output_path))
+            token, base_url, input_path, DataFile(token, base_url, output_path))
 
         # Experiments
         self.Investigation = Investigation(token, base_url)
         self.Study = Study(token, base_url)
-        self.Assay = Assay(token, base_url)
+        self.Assay = Assay(
+            token, base_url, input_path, DataFile(token, base_url, output_path))
 
         # Assets
         self.DataFile = DataFile(token, base_url, output_path)

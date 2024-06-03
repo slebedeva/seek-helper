@@ -41,7 +41,7 @@ def mock_requests(monkeypatch):
 
 @pytest.fixture
 def project():
-    return Project('token', 'http://localhost:3000', 'output/path', 'input/path', mock.Mock())
+    return Project('token', 'http://localhost:3000', 'input/path', mock.Mock())
 
 
 class TestProject:

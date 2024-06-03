@@ -41,7 +41,7 @@ def mock_requests(monkeypatch):
 
 @pytest.fixture
 def assay():
-    return Assay('token', 'http://localhost:3000')
+    return Assay('token', 'http://localhost:3000', 'input/path', mock.Mock())
 
 
 class TestAssay:
@@ -108,3 +108,7 @@ class TestAssay:
         result = assay.delete(1)
 
         assert result == json.loads(DELETE_RESPONSE)
+
+    # TODO: test_download_data_files
+
+    # TODO: test_upload_data_files

@@ -42,9 +42,9 @@ seek_helper = SeekHelper('your_token', 'seek_instance_url', 'output_path', 'inpu
 
 `seek_instance_url`: the SEEK instance URL to be used, like http://localhost:3000
 
-`output_path`: a path where downloaded files will be stored
+`output_path`: the relative path to the directory where downloaded files will be stored
 
-`input_path`: a path where files for upload are stored
+`input_path`: the relative path to the directory where files for upload are stored
 
 Then you can instantiate an object of a resource. Example:
 
@@ -367,6 +367,12 @@ Below are the current resources and operations available. Check the API document
         }
     })
 
+    # Download all data files of an assay
+    assay.download_data_files()
+
+    # Upload data files to an assay
+    assay.upload_data_files(1)
+
     # Delete an assay by id
     assay.delete(1)
     ```
@@ -436,6 +442,7 @@ pytest
 
 ## TODO
 - Include more resources and operations
+- Fetch resources by string (e.g., assays that contain "Experiment" in the title)
 - Add logs
 - Upload the library to a repository like PyPi
 - Typify entities

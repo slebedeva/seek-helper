@@ -7,11 +7,8 @@ from seek_helper.assets.data_file import DataFile
 
 class Project(HttpHelper):
 
-    def __init__(self, token: str, base_url: str, output_path: str, input_path: str, data_file: DataFile):
+    def __init__(self, token: str, base_url: str, input_path: str, data_file: DataFile):
         super().__init__(token=token, url=f'{base_url}/projects')
-        self.token = token
-        self.base_url = base_url
-        self.output_path = output_path
         self.input_path = input_path
         self.data_file = data_file
 
