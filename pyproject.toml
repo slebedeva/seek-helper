@@ -4,7 +4,7 @@ version = "0.1.0"
 authors = [
   { name="Danilo Bueno", email="dbueno@ed.ac.uk" },
 ]
-description = "A library to facilitate the use of the SEEK API"
+description = "A library to facilitate the use of the FAIRDOM-SEEK API"
 readme = "README.md"
 requires-python = ">=3.8"
 classifiers = [

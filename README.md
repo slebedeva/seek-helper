@@ -1,10 +1,10 @@
 # SEEK Helper
 
-This library serves to facilitate the use of the SEEK API, abstracting some configurations and commands.
+This library serves to facilitate the use of the [FAIRDOM-SEEK](https://seek4science.org) API, abstracting some configurations and commands.
 
-Please check the API documentation to see the response structures and more.
+Please check the API documentation to see the responses structure and more.
 
-The FAIRDOMHub API documentation is [here](https://fairdomhub.org/api).
+The FAIRDOMHub API documentation can be found [here](https://fairdomhub.org/api).
 
 ## Installation
 
@@ -23,7 +23,7 @@ The FAIRDOMHub API documentation is [here](https://fairdomhub.org/api).
     python3 -m build
     ```
 3) Copy the generated `tar.gz` file to your project/code directory
-4) Inside your project/code directory, install the library (e.g. version 0.1.0):
+4) Inside your project/code directory, install the library (e.g., version 0.1.0):
     ```bash
     pip install seek_helper-0.1.0.tar.gz
     ```
