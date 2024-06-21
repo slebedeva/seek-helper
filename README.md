@@ -6,6 +6,9 @@ Please check the API documentation to see the responses structure and more.
 
 The FAIRDOMHub API documentation can be found [here](https://fairdomhub.org/api).
 
+## About us
+This library was created by [Danilo](https://github.com/DaniloBueno) and [Andrew](https://github.com/AndrewWood94) for the [PhenomUK](https://phenomuk.org/) project.
+
 ## Installation
 
 ### Requirements
