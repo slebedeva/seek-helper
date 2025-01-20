@@ -1,5 +1,5 @@
-import os
 import mimetypes
+import os
 import requests
 from seek_helper.http_helper import HttpHelper
 from seek_helper.assets.data_file import DataFile
@@ -12,7 +12,7 @@ class Project(HttpHelper):
         self.input_path = input_path
         self.data_file = data_file
 
-    def download_data_files(self, id: str, limit: int = 10) -> None:
+    def download_data_files(self, id: int, limit: int = 10) -> None:
         project = self.get(id)
 
         data_files = project['data']['relationships']['data_files']['data']
@@ -21,30 +21,28 @@ class Project(HttpHelper):
         for id in ids[:limit]:
             self.data_file.download(id)
 
-    def upload_data_files(self, id: str, limit: int = 10) -> None:
+    def upload_data_files(self, id: int, limit: int = 10) -> None:
         files = os.listdir(self.input_path)
 
         for file in files[:limit]:
-            mime_type = mimetypes.guess_type(file)[0]
-
             payload = {
-                "data": {
-                    "type": "data_files",
-                    "attributes": {
-                        "title": file,
-                            "content_blobs": [
+                'data': {
+                    'type': 'data_files',
+                    'attributes': {
+                        'title': file,
+                            'content_blobs': [
                                 {
-                                    "original_filename": file,
-                                    "content_type": mime_type
+                                    'original_filename': file,
+                                    'content_type': mimetypes.guess_type(file)[0]
                                 }
                             ],
                     },
-                    "relationships": {
-                        "projects": {
-                            "data": [
+                    'relationships': {
+                        'projects': {
+                            'data': [
                                 {
-                                    "id": id,
-                                    "type": "projects"
+                                    'id': id,
+                                    'type': 'projects'
                                 }
                             ]
                         },

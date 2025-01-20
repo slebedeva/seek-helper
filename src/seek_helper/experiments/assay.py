@@ -1,5 +1,5 @@
-import os
 import mimetypes
+import os
 import requests
 from seek_helper.http_helper import HttpHelper
 from seek_helper.assets.data_file import DataFile
@@ -12,7 +12,7 @@ class Assay(HttpHelper):
         self.input_path = input_path
         self.data_file = data_file
 
-    def download_data_files(self, id: str, limit: int = 10) -> None:
+    def download_data_files(self, id: int, limit: int = 10) -> None:
         assay = self.get(id)
 
         data_files = assay['data']['relationships']['data_files']['data']
@@ -21,38 +21,36 @@ class Assay(HttpHelper):
         for id in ids[:limit]:
             self.data_file.download(id)
 
-    def upload_data_files(self, assay_id: str, project_id: str, limit: int = 10) -> None:
+    def upload_data_files(self, assay_id: int, project_id: int, limit: int = 10) -> None:
         files = os.listdir(self.input_path)
 
         for file in files[:limit]:
-            mime_type = mimetypes.guess_type(file)[0]
-
             payload = {
-                "data": {
-                    "type": "data_files",
-                    "attributes": {
-                        "title": file,
-                            "content_blobs": [
+                'data': {
+                    'type': 'data_files',
+                    'attributes': {
+                        'title': file,
+                            'content_blobs': [
                                 {
-                                    "original_filename": file,
-                                    "content_type": mime_type
+                                    'original_filename': file,
+                                    'content_type': mimetypes.guess_type(file)[0]
                                 }
                             ],
                     },
-                    "relationships": {
-                        "projects": {
-                            "data": [
+                    'relationships': {
+                        'projects': {
+                            'data': [
                                 {
-                                    "id": project_id,
-                                    "type": "projects"
+                                    'id': project_id,
+                                    'type': 'projects'
                                 }
                             ]
                         },
-                        "assays": {
-                            "data": [
+                        'assays': {
+                            'data': [
                                 {
-                                    "id": assay_id,
-                                    "type": "assays"
+                                    'id': assay_id,
+                                    'type': 'assays'
                                 }
                             ]
                         },

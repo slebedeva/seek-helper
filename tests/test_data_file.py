@@ -41,7 +41,7 @@ def mock_requests(monkeypatch):
 
 @pytest.fixture
 def data_file():
-    return DataFile('token', 'http://localhost:3000', 'output_path')
+    return DataFile('token', 'http://localhost:3000', 'output_path', 'input_path')
 
 
 class TestDataFile:
