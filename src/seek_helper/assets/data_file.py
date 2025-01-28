@@ -1,4 +1,5 @@
 import mimetypes
+import os
 import requests
 import uuid
 from seek_helper.http_helper import HttpHelper
@@ -30,13 +31,18 @@ class DataFile(HttpHelper):
             print('This operation is not available. Please enable experimental features to use it.')
             return
 
+        file_path = f"{self.input_path}/{filename}"
+        if not os.path.isfile(file_path):
+            print(f'File {file_path} does not exist.')
+            return
+
         key = str(uuid.uuid4())
 
         r = requests.get(f'{self.url}/s3_presigned_url?method=put&bucket={bucket}&key={key}', headers=self.headers)
         r.raise_for_status()
         url = r.json().get('url')
 
-        with open(f"{self.input_path}/{filename}", 'rb') as f:
+        with open(file_path, 'rb') as f:
             r = requests.put(url, data=f)
             r.raise_for_status()
 

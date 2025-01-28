@@ -111,3 +111,5 @@ class TestDataFile:
         assert result == json.loads(DELETE_RESPONSE)
 
     # TODO: test_download
+
+    # TODO: test_upload_to_s3
