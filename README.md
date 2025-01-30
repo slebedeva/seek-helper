@@ -26,17 +26,17 @@ This library was created by [Danilo](https://github.com/DaniloBueno) and [Andrew
 - Pip 24+
 
 ### Steps
-1) Clone this repository
-2) Install `build`:
+1. Clone this repository
+2. Install `build`:
     ```bash
     python3 -m pip install --upgrade build
     ```
-3) Inside `seek-helper` directory, build the library:
+3. Inside `seek-helper` directory, build the library:
     ```bash
     python3 -m build
     ```
-3) Copy the generated `tar.gz` file to your project/code directory
-4) Inside your project/code directory, install the library (e.g., version 0.1.0):
+4. Copy the generated `tar.gz` file to your project/code directory
+5. Inside your project/code directory, install the library (e.g., version 0.1.0):
     ```bash
     pip install seek_helper-0.1.0.tar.gz
     ```
@@ -466,7 +466,7 @@ df = datafile.upload_to_s3('bucket_name', 'file_name', 'project_id')
 
 `bucket_name`: the name of the S3 bucket that will store the file
 
-`file_name`: the name of the file that will be uploaded
+`file_name`: the name of the file that will be uploaded. It has to be located in the `input_path` directory.
 
 `project_id`: the id of the Project that will be linked to the file in SEEK
 
