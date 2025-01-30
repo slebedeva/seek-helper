@@ -6,8 +6,18 @@ Please check the API documentation to see the responses structure and more.
 
 The FAIRDOMHub API documentation can be found [here](https://fairdomhub.org/api).
 
-## About us
 This library was created by [Danilo](https://github.com/DaniloBueno) and [Andrew](https://github.com/AndrewWood94) for the [PhenomUK](https://phenomuk.org/) project.
+
+## Table of contents
+1. [Installation](#installation)
+2. [Usage](#usage)
+3. [Resources & Operations](#resources--operations)
+    1. [Yellow Pages](#yellow-pages)
+    2. [Experiments](#experiments)
+    3. [Assets](#assets)
+4. [Experimental Features](#experimental-features)
+5. [Testing](#testing)
+6. [TODO](#todo)
 
 ## Installation
 
@@ -59,13 +69,13 @@ print(p)
 
 This code snippet will print data of the Project of id 1 in `JSON` format.
 
-### Resources & Operations
+## Resources & Operations
 
 Users can only manage the resources they are permitted to manage or are public.
 
 Below are the current resources and operations available. Check the API documentation for the correct payloads and responses.
 
-**Yellow Pages**
+### Yellow Pages
 - Institutions
     ```python
     institution = seek_helper.Institution
@@ -227,7 +237,7 @@ Below are the current resources and operations available. Check the API document
     project.delete(1)
     ```
 
-**Experiments**
+### Experiments
 - Investigations
     ```python
     investigation = seek_helper.Investigation
@@ -380,7 +390,7 @@ Below are the current resources and operations available. Check the API document
     assay.delete(1)
     ```
 
-**Assets**
+### Assets
 - Data Files
     ```python
     data_file = seek_helper.DataFile
@@ -436,6 +446,29 @@ Below are the current resources and operations available. Check the API document
     # Delete a data file by id
     data_file.delete(1)
     ```
+
+## Experimental Features
+The experimental features are related to the PhenomUK SEEK instance, and can be enabled when instantiating the `SeekHelper` class, in the last `boolean` parameter:
+
+```python
+from seek_helper import SeekHelper
+
+seek_helper = SeekHelper('your_token', 'seek_instance_url', 'output_path', 'input_path', True)
+```
+
+The only experimental feature currently available is the "Upload to S3" operation, which allows you to send files to an S3 bucket. Example:
+
+```python
+data_file = seek_helper.DataFile
+
+df = datafile.upload_to_s3('bucket_name', 'file_name', 'project_id')
+```
+
+`bucket_name`: the name of the S3 bucket that will store the file
+
+`file_name`: the name of the file that will be uploaded
+
+`project_id`: the id of the Project that will be linked to the file in SEEK
 
 ## Testing
 In the project root, run:
